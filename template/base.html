@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Virtual Bank</title>
+    <style>
+        body {font-family: Arial; background:#f4f6f8; margin:0;}
+        nav {background:#1f2937; padding:15px;}
+        nav a {color:white; margin-right:15px; text-decoration:none;}
+        .container {width:420px; margin:40px auto; background:white; padding:25px; border-radius:8px;}
+        input, button {width:100%; padding:10px; margin:8px 0;}
+        button {background:#2563eb; color:white; border:none;}
+        .msg {color:green; font-weight:bold;}
+    </style>
+</head>
+<body>
+<nav>
+    <a href="/">Home</a>
+    <a href="/create">Create</a>
+    <a href="/deposit">Deposit</a>
+    <a href="/withdraw">Withdraw</a>
+    <a href="/transfer">Transfer</a>
+    <a href="/payee">Add Payee</a>
+    <a href="/details">Details</a>
+    <a href="/transactions">Transactions</a>
+    <a href="/close">Close</a>
+</nav>
+<div class="container">
+{% block content %}{% endblock %}
+</div>
+</body>
+</html>

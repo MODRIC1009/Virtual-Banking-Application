@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Transfer</h2>
+<form method="post">
+<input name="sender" placeholder="Your Account ID" required>
+<input name="pin" placeholder="PIN" required>
+<input name="receiver" placeholder="Payee ID" required>
+<input name="amount" placeholder="Amount" required>
+<button>Transfer</button>
+</form>
+{% if msg %}<p class="msg">{{msg}}</p>{% endif %}
+{% endblock %}

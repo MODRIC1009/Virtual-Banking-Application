@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Withdraw</h2>
+<form method="post">
+<input name="acc_id" placeholder="Account ID" required>
+<input name="pin" placeholder="PIN" required>
+<input name="amount" placeholder="Amount" required>
+<button>Withdraw</button>
+</form>
+{% if msg %}<p class="msg">{{msg}}</p>{% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Account Details</h2>
+<form method="post">
+<input name="acc_id" placeholder="Account ID" required>
+<button>View</button>
+</form>
+
+{% if acc %}
+<p>Name: {{acc.name}}</p>
+<p>ID: {{acc.account_id}}</p>
+<p>Balance: {{acc.balance}}</p>
+<p>Status: {{ "Active" if acc.active else "Closed" }}</p>
+{% endif %}
+{% endblock %}

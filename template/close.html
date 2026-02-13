@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Close Account</h2>
+<form method="post">
+<input name="acc_id" placeholder="Account ID" required>
+<input name="pin" placeholder="PIN" required>
+<button>Close Account</button>
+</form>
+{% if msg %}<p class="msg">{{msg}}</p>{% endif %}
+{% endblock %}
