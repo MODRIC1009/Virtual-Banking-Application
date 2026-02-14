@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Check Balance</h2>
+
+<form method="post">
+    <input name="acc_id" placeholder="Account ID" required>
+    <input name="pin" placeholder="PIN" required>
+    <button>Check Balance</button>
+</form>
+
+{% if bal is not none %}
+<p><strong>Current Balance:</strong> {{ bal }}</p>
+{% endif %}
+
+{% if msg %}
+<p class="msg">{{ msg }}</p>
+{% endif %}
+
+{% endblock %}

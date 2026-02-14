@@ -2,10 +2,13 @@
 {% block content %}
 <h2>Create Account</h2>
 <form method="post">
-<input name="name" placeholder="Name" required>
-<input name="pin" placeholder="4-digit PIN" required>
-<input name="balance" placeholder="Initial Balance" required>
-<button>Create</button>
+    <input name="name" placeholder="Name" required>
+    <input name="pin" placeholder="4-digit PIN" required>
+    <input name="balance" type="number" step="0.01" placeholder="Initial Balance">
+    <button>Create</button>
 </form>
-{% if msg %}<p class="msg">{{msg}}</p>{% endif %}
+
+{% if msg %}
+<p class="msg">{{msg}}</p>
+{% endif %}
 {% endblock %}

@@ -5,7 +5,13 @@ from accounts import Account
 
 
 class Bank:
-    def __init__(self, data_file="data/accounts.json"):
+    def __init__(self, data_file=None):
+        import os
+
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        if data_file is None:
+            data_file = os.path.join(base_dir, "data", "accounts.json")
+
         self.data_file = data_file
         self.accounts = {}
         self._load_accounts()

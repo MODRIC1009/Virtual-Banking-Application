@@ -9,17 +9,26 @@ bank = Bank()
 def home():
     return render_template("index.html")
 
-
 @app.route("/create", methods=["GET", "POST"])
 def create():
     msg = None
     if request.method == "POST":
-        acc = bank.create_account(
-            request.form["name"],
-            request.form["pin"],
-            float(request.form["balance"])
-        )
-        msg = f"Account created. ID: {acc.account_id}"
+        name = request.form.get("name")
+        pin = request.form.get("pin")
+        balance_input = request.form.get("balance")
+
+        # Default balance to 0 if empty or invalid
+        try:
+            balance = float(balance_input)
+        except:
+            balance = 0.0
+
+        if not name or not pin:
+            msg = "Name and PIN are required."
+        else:
+            acc = bank.create_account(name, pin, balance)
+            msg = f"Account created successfully. ID: {acc.account_id}"
+
     return render_template("create.html", msg=msg)
 
 
@@ -87,6 +96,21 @@ def transactions():
             acc = a
     return render_template("transactions.html", acc=acc)
 
+@app.route("/balance", methods=["GET", "POST"])
+def balance():
+    msg = None
+    bal = None
+    if request.method == "POST":
+        acc_id = request.form.get("acc_id")
+        pin = request.form.get("pin")
+
+        account = bank.get(acc_id)
+        if account and account.verify_pin(pin):
+            bal = account.balance
+        else:
+            msg = "Invalid account ID or PIN."
+
+    return render_template("balance.html", msg=msg, bal=bal)
 
 @app.route("/close", methods=["GET", "POST"])
 def close():
